@@ -30,6 +30,9 @@
       <li>Simultaneous rip and encode</li>
       <li>Does not require a specific desktop environment</li>
     </ul>
+    <p>
+      Caveat Emptor: The ARM builds only had limited testing because ARM devices with CD players are rare.
+    </p>
   </description>
 
   <screenshots>
