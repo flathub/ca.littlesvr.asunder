@@ -73,6 +73,7 @@ modules:
   cleanup:
     - /bin/ncurses6-config
 
+# Lame 3.99.5 is in the shared modules, but this is newer
 - name: lame
   buildsystem: autotools
   config-opts:
@@ -84,12 +85,19 @@ modules:
       url:    http://deb.debian.org/debian/pool/main/l/lame/lame_3.100.orig.tar.gz
       sha256: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 
+# The config.quess patches are required because the latest version of the
+# vorbis-tools is from 2008, long before aarch64 existed.
+# https://github.com/xiph/vorbis-tools/issues/22
 - name: vorbis-tools
   buildsystem: autotools
   sources:
     - type:   archive
       url:    http://deb.debian.org/debian/pool/main/v/vorbis-tools/vorbis-tools_1.4.0.orig.tar.gz
       sha256: a389395baa43f8e5a796c99daf62397e435a7e73531c9f44d9084055a05d22bc
+    - type:   file
+      path:   ./config-patches/config.guess
+    - type:   file
+      path:   ./config-patches/config.sub
   cleanup:
     - /bin/vorbiscomment
     - /bin/ogginfo
@@ -140,19 +148,29 @@ modules:
       url:    https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/opensourceliving/mac-4.11-u4-b5-s7.tar.gz
       sha256: 174cce02a2e122fc69cb6c72d13371c400c6f9427219ebbd4d5beff1d11cd4f6
     - type:   patch
-      path:   mac-patches/01_output.patch
+      path:   ./mac-patches/01_output.patch
     - type:   patch
-      path:   mac-patches/02_exec-stack.diff
+      path:   ./mac-patches/02_exec-stack.diff
     - type:   patch
-      path:   mac-patches/03_GCC-6.diff
+      path:   ./mac-patches/03_GCC-6.diff
 
+# The config.quess patches are required because the latest version of the
+# libcddb is from 2008, long before aarch64 existed.
 - name: libcddb
   buildsystem: autotools
   sources:
-    - type: archive
-      url: http://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
+    - type:   archive
+      url:    http://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
       sha256: 35ce0ee1741ea38def304ddfe84a958901413aa829698357f0bee5bb8f0a223b
-      
+    - type:   file
+      path:   ./config-patches/config.guess
+    - type:   file
+      path:   ./config-patches/config.sub
+
+
+# The config.quess patches are required because the latest version of the
+# cdparanoia is from 2006 (!), long before aarch64 existed.
+# Bonus points because it needs to be renamed
 - name: cdparanoia
   buildsystem: simple
   build-commands:
@@ -160,18 +178,31 @@ modules:
     - make all slib
     - make install
   sources:
-    - type: archive
-      url: http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
-      sha256: 005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
+    - type:          archive
+      url:           http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
+      sha256:        005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
+    - type:          file
+      path:          ./config-patches/config.guess
+      dest-filename: configure.guess
+    - type:          file
+      path:          ./config-patches/config.sub
+      dest-filename: configure.sub
 
+# The config.quess patches are required because the latest version of the
+# asunder is from 2005 (!), long before aarch64 existed.
+# https://littlesvr.ca/bugs/show_bug.cgi?id=65
 - name: asunder
   buildsystem: autotools
   config-opts:
     - --prefix=/app
   sources:
-    - type: archive
-      url: http://littlesvr.ca/asunder/releases/asunder-2.9.5.tar.bz2
+    - type:   archive
+      url:    http://littlesvr.ca/asunder/releases/asunder-2.9.5.tar.bz2
       sha256: 64ce1159e237ec5fa785fe1e98f4e176f27e3b043f1ed0a058948f2cbe323d19
+    - type:   file
+      path:   ./config-patches/config.guess
+    - type:   file
+      path:   ./config-patches/config.sub
   post-install:
     - install -Dm 644 ./asunder.desktop -t /app/share/applications/
     - install -Dm 644 ./pixmaps/asunder.png -t /app/share/icons/hicolor/128x128/apps/
