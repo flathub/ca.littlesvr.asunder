@@ -154,13 +154,22 @@ modules:
     - type:   patch
       path:   ./mac-patches/03_GCC-6.diff
 
+# The config.quess patches are required because the latest version of the
+# libcddb is from 2008, long before aarch64 existed.
 - name: libcddb
   buildsystem: autotools
   sources:
-    - type: archive
-      url: http://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
+    - type:   archive
+      url:    http://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
       sha256: 35ce0ee1741ea38def304ddfe84a958901413aa829698357f0bee5bb8f0a223b
-      
+    - type:   file
+      path:   ./vorbis-patches/config.guess
+    - type:   file
+      path:   ./vorbis-patches/config.sub
+
+
+# The config.quess patches are required because the latest version of the
+# cdparanoia is from 2006 (!), long before aarch64 existed.
 - name: cdparanoia
   buildsystem: simple
   build-commands:
@@ -168,9 +177,13 @@ modules:
     - make all slib
     - make install
   sources:
-    - type: archive
-      url: http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
+    - type:   archive
+      url:    http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
       sha256: 005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
+    - type:   file
+      path:   ./vorbis-patches/config.guess
+    - type:   file
+      path:   ./vorbis-patches/config.sub
 
 - name: asunder
   buildsystem: autotools
