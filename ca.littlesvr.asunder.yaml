@@ -73,6 +73,7 @@ modules:
   cleanup:
     - /bin/ncurses6-config
 
+# Lame 3.99.5 is in the shared modules, but this is newer
 - name: lame
   buildsystem: autotools
   config-opts:
@@ -84,12 +85,19 @@ modules:
       url:    http://deb.debian.org/debian/pool/main/l/lame/lame_3.100.orig.tar.gz
       sha256: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 
+# The config.quess patches are required because the latest version of the
+# vorbis-tools is from 2008, long before aarch64 existed.
+# https://github.com/xiph/vorbis-tools/issues/22
 - name: vorbis-tools
   buildsystem: autotools
   sources:
     - type:   archive
       url:    http://deb.debian.org/debian/pool/main/v/vorbis-tools/vorbis-tools_1.4.0.orig.tar.gz
       sha256: a389395baa43f8e5a796c99daf62397e435a7e73531c9f44d9084055a05d22bc
+    - type:   file
+      path:   ./vorbis-patches/config.guess
+    - type:   file
+      path:   ./vorbis-patches/config.sub
   cleanup:
     - /bin/vorbiscomment
     - /bin/ogginfo
@@ -140,11 +148,11 @@ modules:
       url:    https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/opensourceliving/mac-4.11-u4-b5-s7.tar.gz
       sha256: 174cce02a2e122fc69cb6c72d13371c400c6f9427219ebbd4d5beff1d11cd4f6
     - type:   patch
-      path:   mac-patches/01_output.patch
+      path:   ./mac-patches/01_output.patch
     - type:   patch
-      path:   mac-patches/02_exec-stack.diff
+      path:   ./mac-patches/02_exec-stack.diff
     - type:   patch
-      path:   mac-patches/03_GCC-6.diff
+      path:   ./mac-patches/03_GCC-6.diff
 
 - name: libcddb
   buildsystem: autotools
