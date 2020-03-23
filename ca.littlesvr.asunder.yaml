@@ -45,6 +45,8 @@ modules:
     - type: archive
       url: https://github.com/mstorsjo/fdk-aac/archive/v2.0.1.tar.gz
       sha256: a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6
+  post-install:
+    - ln -s /app/lib/libfdk-aac.so /app/bin/fdkaac
 
 - name: flac
   buildsystem: autotools
