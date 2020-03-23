@@ -141,18 +141,18 @@ modules:
         - rm configure.in
         - autoreconf -i
 
+# Instruction taken from org.freac.freac.json
 - name: mac
-  buildsystem: autotools
+  buildsystem: simple
+  build-commands:
+    - make -f Source/Projects/NonWindows/Makefile prefix=/app all install
   sources:
-    - type:   archive
-      url:    https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/opensourceliving/mac-4.11-u4-b5-s7.tar.gz
-      sha256: 174cce02a2e122fc69cb6c72d13371c400c6f9427219ebbd4d5beff1d11cd4f6
-    - type:   patch
-      path:   ./mac-patches/01_output.patch
-    - type:   patch
-      path:   ./mac-patches/02_exec-stack.diff
-    - type:   patch
-      path:   ./mac-patches/03_GCC-6.diff
+    - type:   		archive
+      url:    		https://monkeysaudio.com/files/MAC_SDK_524.zip
+      sha256: 		dec92080e06e30fabb3565ad6f9987394c77b3af105291d2965ddf0a3b473fb8
+      strip-components: 0
+    - type:   		patch
+      path:   		./mac-patches/mac-sdk-5.24-gcc.patch
 
 # The config.quess patches are required because the latest version of the
 # libcddb is from 2008, long before aarch64 existed.
