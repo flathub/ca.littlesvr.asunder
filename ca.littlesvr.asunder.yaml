@@ -59,22 +59,6 @@ modules:
   cleanup:
     - /share/aclocal
 
-# required by lame encoders ¯\_(ツ)_/¯
-- name: libncurses
-  buildsystem: autotools
-  config-opts:
-    - --without-ada
-    - --without-tests
-    - --without-progs
-    - --without-sysmouse
-    - --disable-termcap
-  sources:
-  - type: archive
-    url: http://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
-    sha256: aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
-  cleanup:
-    - /bin/ncurses6-config
-
 # Lame 3.99.5 is in the shared modules, but this is newer
 - name: lame
   buildsystem: autotools
@@ -82,12 +66,14 @@ modules:
     - --enable-nasm
     - --with-fileio=sndfile
     - --disable-static
+    # else we require ncurses ¯\_(ツ)_/¯
+    - --disable-frontend
   sources:
     - type:   archive
       url:    http://deb.debian.org/debian/pool/main/l/lame/lame_3.100.orig.tar.gz
       sha256: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 
-# The config.quess patches are required because the latest version of the
+# The config.guess patches are required because the latest version of the
 # vorbis-tools is from 2008, long before aarch64 existed.
 # https://github.com/xiph/vorbis-tools/issues/22
 - name: vorbis-tools
@@ -150,13 +136,13 @@ modules:
     - make -f Source/Projects/NonWindows/Makefile prefix=/app all install
   sources:
     - type:   		archive
-      url:    		https://monkeysaudio.com/files/MAC_SDK_524.zip
-      sha256: 		dec92080e06e30fabb3565ad6f9987394c77b3af105291d2965ddf0a3b473fb8
+      url:    		https://monkeysaudio.com/files/MAC_SDK_533.zip
+      sha256: 		df1efd1e0ad8aed253ba8024a1b8cb795f12fbbab84f6301f5217f774f99bfa8
       strip-components: 0
     - type:   		patch
-      path:   		./mac-patches/mac-sdk-5.24-gcc.patch
+      path:   		./mac-patches/mac-sdk-5.33-gcc.patch
 
-# The config.quess patches are required because the latest version of the
+# The config.guess patches are required because the latest version of the
 # libcddb is from 2008, long before aarch64 existed.
 - name: libcddb
   buildsystem: autotools
@@ -170,7 +156,7 @@ modules:
       path:   ./config-patches/config.sub
 
 
-# The config.quess patches are required because the latest version of the
+# The config.guess patches are required because the latest version of the
 # cdparanoia is from 2006 (!), long before aarch64 existed.
 # Bonus points because it needs to be renamed
 - name: cdparanoia
@@ -190,7 +176,7 @@ modules:
       path:          ./config-patches/config.sub
       dest-filename: configure.sub
 
-# The config.quess patches are required because the latest version of the
+# The config.guess patches are required because the latest version of the
 # asunder is from 2005 (!), long before aarch64 existed.
 # https://littlesvr.ca/bugs/show_bug.cgi?id=65
 - name: asunder
