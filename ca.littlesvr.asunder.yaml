@@ -201,7 +201,7 @@ modules:
   buildsystem: simple
   build-commands:
     - install -Dm 644 ca.littlesvr.asunder.metainfo.xml -t /app/share/metainfo/
-    - install -Dm 644 asunder.svg /app/share/icons/scalable/apps/asunder.svg
+    - install -Dm 644 asunder.svg /app/share/icons/hicolor/scalable/apps/asunder.svg
   sources:
     - type: file
       path: ca.littlesvr.asunder.metainfo.xml
