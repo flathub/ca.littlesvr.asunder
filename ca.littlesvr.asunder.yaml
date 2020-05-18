@@ -69,8 +69,8 @@ modules:
     # else we require ncurses ¯\_(ツ)_/¯
     - --disable-frontend
   sources:
-    - type:   archive
-      url:    http://deb.debian.org/debian/pool/main/l/lame/lame_3.100.orig.tar.gz
+    - type: archive
+      url: http://deb.debian.org/debian/pool/main/l/lame/lame_3.100.orig.tar.gz
       sha256: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 
 # The config.guess patches are required because the latest version of the
@@ -79,13 +79,13 @@ modules:
 - name: vorbis-tools
   buildsystem: autotools
   sources:
-    - type:   archive
-      url:    http://deb.debian.org/debian/pool/main/v/vorbis-tools/vorbis-tools_1.4.0.orig.tar.gz
+    - type: archive
+      url: http://deb.debian.org/debian/pool/main/v/vorbis-tools/vorbis-tools_1.4.0.orig.tar.gz
       sha256: a389395baa43f8e5a796c99daf62397e435a7e73531c9f44d9084055a05d22bc
-    - type:   file
-      path:   ./config-patches/config.guess
-    - type:   file
-      path:   ./config-patches/config.sub
+    - type: file
+      path: ./config-patches/config.guess
+    - type: file
+      path: ./config-patches/config.sub
   cleanup:
     - /bin/vorbiscomment
     - /bin/ogginfo
@@ -94,22 +94,37 @@ modules:
     - /share/locale
     - /share/runtime
 
+# Opus splits up their packages in three disctinct components: file,
+# encoder and tools. They also officially host their files at Mozilla,
+# whith mirrors on Github and others.
+- name: opus-file
+  buildsystem: autotools
+  sources:
+    - type: archive
+      url: https://archive.mozilla.org/pub/opus/opusfile-0.11.tar.gz
+      sha256: 74ce9b6cf4da103133e7b5c95df810ceb7195471e1162ed57af415fabf5603bf
+
+- name: opus-encoder
+  buildsystem: autotools
+  sources:
+    - type: archive
+      url: https://archive.mozilla.org/pub/opus/libopusenc-0.2.1.tar.gz
+      sha256: 8298db61a8d3d63e41c1a80705baa8ce9ff3f50452ea7ec1c19a564fe106cbb9
+
 - name: opus-tools
   buildsystem: autotools
   sources:
-    - type:   archive
-      url:    http://deb.debian.org/debian/pool/main/o/opus-tools/opus-tools_0.1.10.orig.tar.gz
-      sha256: 2400c3434ec923cea100043f86bc4181997377c6105c697195779391cc5e70c4
-  cleanup:
-    - /bin/opusinfo
-    - /bin/opusdec
+    - type: archive
+      url: https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz
+      sha256: b4e56cb00d3e509acfba9a9b627ffd8273b876b4e2408642259f6da28fa0ff86
 
+# Wavpack is the most straigthforward of them all
 - name: wavpack
   buildsystem: autotools
   sources:
-    - type:   archive
-      url:    http://deb.debian.org/debian/pool/main/w/wavpack/wavpack_5.1.0.orig.tar.bz2
-      sha256: 1939627d5358d1da62bc6158d63f7ed12905552f3a799c799ee90296a7612944
+    - type: archive
+      url: http://www.wavpack.com/wavpack-5.3.0.tar.bz2
+      sha256: b6f00b3a2185a1d2df6cf8d893ec60fd645d2eb90db7428a617fd27c9e8a6a01
   cleanup:
     - /bin/wvtag
 
@@ -135,25 +150,25 @@ modules:
   build-commands:
     - make -f Source/Projects/NonWindows/Makefile prefix=/app all install
   sources:
-    - type:   		archive
-      url:    		https://monkeysaudio.com/files/MAC_SDK_533.zip
-      sha256: 		df1efd1e0ad8aed253ba8024a1b8cb795f12fbbab84f6301f5217f774f99bfa8
+    - type: archive
+      url: https://monkeysaudio.com/files/MAC_SDK_538d.zip
+      sha256: dab699501f5cc044f8937a369f91aec0a04e8b9f05576e299db4c1b9f8883c0a
       strip-components: 0
-    - type:   		patch
-      path:   		./mac-patches/mac-sdk-5.33-gcc.patch
+    - type: patch
+      path: ./mac-patches/mac-sdk-5.33-gcc.patch
 
 # The config.guess patches are required because the latest version of the
 # libcddb is from 2008, long before aarch64 existed.
 - name: libcddb
   buildsystem: autotools
   sources:
-    - type:   archive
-      url:    http://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
+    - type: archive
+      url: http://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
       sha256: 35ce0ee1741ea38def304ddfe84a958901413aa829698357f0bee5bb8f0a223b
-    - type:   file
-      path:   ./config-patches/config.guess
-    - type:   file
-      path:   ./config-patches/config.sub
+    - type: file
+      path: ./config-patches/config.guess
+    - type: file
+      path: ./config-patches/config.sub
 
 
 # The config.guess patches are required because the latest version of the
@@ -166,14 +181,14 @@ modules:
     - make all slib
     - make install
   sources:
-    - type:          archive
-      url:           http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
-      sha256:        005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
-    - type:          file
-      path:          ./config-patches/config.guess
+    - type: archive
+      url: http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
+      sha256: 005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
+    - type: file
+      path: ./config-patches/config.guess
       dest-filename: configure.guess
-    - type:          file
-      path:          ./config-patches/config.sub
+    - type: file
+      path: ./config-patches/config.sub
       dest-filename: configure.sub
 
 # The config.guess patches are required because the latest version of the
@@ -184,13 +199,13 @@ modules:
   config-opts:
     - --prefix=/app
   sources:
-    - type:   archive
-      url:    http://littlesvr.ca/asunder/releases/asunder-2.9.5.tar.bz2
+    - type: archive
+      url: http://littlesvr.ca/asunder/releases/asunder-2.9.5.tar.bz2
       sha256: 64ce1159e237ec5fa785fe1e98f4e176f27e3b043f1ed0a058948f2cbe323d19
-    - type:   file
-      path:   ./config-patches/config.guess
-    - type:   file
-      path:   ./config-patches/config.sub
+    - type: file
+      path: ./config-patches/config.guess
+    - type: file
+      path: ./config-patches/config.sub
   post-install:
     - install -Dm 644 ./asunder.desktop -t /app/share/applications/
     - install -Dm 644 ./pixmaps/asunder.png -t /app/share/icons/hicolor/128x128/apps/
