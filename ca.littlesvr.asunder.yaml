@@ -20,9 +20,9 @@ finish-args:
 # Required to load music metadata
 - --share=network
 
-# Required for input-output
-- --filesystem=xdg-download
-- --filesystem=xdg-music
+# Required for input-output. On request of Upstream,
+# full home permissions have been given.
+- --filesystem=home
 - --env=TMPDIR=/var/tmp
 
 cleanup:
