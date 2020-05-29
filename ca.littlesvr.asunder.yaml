@@ -189,35 +189,24 @@ modules:
       path: ./config-patches/config.sub
       dest-filename: configure.sub
 
-# The config.guess patches are required because the latest version of the
-# asunder is from 2005 (!), long before aarch64 existed.
-# https://littlesvr.ca/bugs/show_bug.cgi?id=65
 - name: asunder
   buildsystem: autotools
   config-opts:
     - --prefix=/app
   sources:
     - type: archive
-      url: http://littlesvr.ca/asunder/releases/asunder-2.9.5.tar.bz2
-      sha256: 64ce1159e237ec5fa785fe1e98f4e176f27e3b043f1ed0a058948f2cbe323d19
-    - type: file
-      path: ./config-patches/config.guess
-    - type: file
-      path: ./config-patches/config.sub
+      url: http://littlesvr.ca/asunder/releases/asunder-2.9.6.tar.bz2
+      sha256: ea3c7fa65b2373461eb3d9f929aa85499aa00359a43dbbd80d1e1f48056a96f9
   post-install:
     - install -Dm 644 ./asunder.desktop -t /app/share/applications/
     - install -Dm 644 ./pixmaps/asunder.png -t /app/share/icons/hicolor/128x128/apps/
+    - install -Dm 644 ./pixmaps/asunder.svg -t /app/share/icons/hicolor/scalable/apps/
 
-# Feature request has been made upstream to provide these files in the source package
-# https://littlesvr.ca/bugs/show_bug.cgi?id=64
 - name: metadata
   buildsystem: simple
   build-commands:
     - install -Dm 644 ca.littlesvr.asunder.metainfo.xml -t /app/share/metainfo/
-    - install -Dm 644 asunder.svg /app/share/icons/hicolor/scalable/apps/asunder.svg
   sources:
     - type: file
       path: ca.littlesvr.asunder.metainfo.xml
-    - type: file
-      path: asunder.svg
 

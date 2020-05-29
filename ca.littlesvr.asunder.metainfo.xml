@@ -47,6 +47,18 @@
   </screenshots>
 
   <releases>
+    <release version="2.9.6" date="2020-05-28">
+      <description>
+        <p>
+          <ul>
+            <li>Changed the default CDDB server to gnudb.gnudb.org</li>
+            <li>Asunder can now be more easily Flatpak-ed. Thanks to Kevin "Eonfge" Degeling for the help.</li>
+            <li>Updated eo, it, pt, pt_BR, sq, and zh_CN translations.</li>
+            <li>Updated config.guess and config.sub with the current latest to support (among other things) aarch64.</li>
+          </ul>
+        </p>
+      </description>
+    </release>
     <release version="2.9.5" date="2019-10-21">
       <description>
         <p>First release of Asunder on Flathub.</p>
