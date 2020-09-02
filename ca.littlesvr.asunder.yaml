@@ -108,7 +108,8 @@ modules:
 # Instruction taken from org.freac.freac.json
 - name: musepack
   buildsystem: autotools
-  disabled: true
+  config-opts:
+    - LDFLAGS=-Wl,--allow-multiple-definition
   sources:
     - type: archive
       url: https://files.musepack.net/source/musepack_src_r475.tar.gz
