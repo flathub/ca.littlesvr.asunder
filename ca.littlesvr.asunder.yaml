@@ -66,7 +66,7 @@ modules:
   buildsystem: autotools
   sources:
     - type: archive
-      url: http://deb.debian.org/debian/pool/main/v/vorbis-tools/vorbis-tools_1.4.0.orig.tar.gz
+      url: https://downloads.xiph.org/releases/vorbis/vorbis-tools-1.4.0.tar.gz
       sha256: a389395baa43f8e5a796c99daf62397e435a7e73531c9f44d9084055a05d22bc
     - type: file
       path: ./config-patches/config.guess
