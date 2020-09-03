@@ -124,20 +124,8 @@ modules:
         - rm configure.in
         - autoreconf -i
 
-# Instruction taken from org.freac.freac.json
-# Plan for shared module: 
-# https://github.com/flathub/shared-modules/pull/121
-- name: mac
-  buildsystem: simple
-  build-commands:
-    - make -f Source/Projects/NonWindows/Makefile prefix=/app all install
-  sources:
-    - type: archive
-      url: https://freac.org/patches/MAC_SDK_544.zip
-      sha256: d5d2c2de4f64c61bc98c59a8691e47a6e2bb1beb3a3ae50d98bb0fdfdb91e480
-      strip-components: 0
-    - type: patch
-      path: ./mac-patches/mac-sdk-5.44-gcc.patch
+# Module for easy sharing
+- shared-modules/mac/mac.json
 
 # The config.guess patches are required because the latest version of the
 # libcddb is from 2008, long before aarch64 existed.
