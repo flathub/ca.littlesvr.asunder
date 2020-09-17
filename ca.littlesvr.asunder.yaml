@@ -68,10 +68,9 @@ modules:
     - type: archive
       url: https://downloads.xiph.org/releases/vorbis/vorbis-tools-1.4.0.tar.gz
       sha256: a389395baa43f8e5a796c99daf62397e435a7e73531c9f44d9084055a05d22bc
-    - type: file
-      path: ./config-patches/config.guess
-    - type: file
-      path: ./config-patches/config.sub
+    - type: shell
+      commands:
+        - cp -p /usr/share/automake-*/config.{sub,guess} .
   cleanup:
     - /bin/vorbiscomment
     - /bin/ogginfo
@@ -135,10 +134,9 @@ modules:
     - type: archive
       url: http://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
       sha256: 35ce0ee1741ea38def304ddfe84a958901413aa829698357f0bee5bb8f0a223b
-    - type: file
-      path: ./config-patches/config.guess
-    - type: file
-      path: ./config-patches/config.sub
+    - type: shell
+      commands:
+        - cp -p /usr/share/automake-*/config.{sub,guess} .
 
 
 # The config.guess patches are required because the latest version of the
@@ -154,12 +152,10 @@ modules:
     - type: archive
       url: http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
       sha256: 005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
-    - type: file
-      path: ./config-patches/config.guess
-      dest-filename: configure.guess
-    - type: file
-      path: ./config-patches/config.sub
-      dest-filename: configure.sub
+    - type: shell
+      commands:
+        - cp -p /usr/share/automake-*/config.sub ./configure.sub
+        - cp -p /usr/share/automake-*/config.guess ./configure.guess
 
 - name: asunder
   buildsystem: autotools
