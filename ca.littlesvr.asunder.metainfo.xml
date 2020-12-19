@@ -47,6 +47,17 @@
   </screenshots>
 
   <releases>
+    <release version="2.9.7" date="2020-10-12">
+      <description>
+        <p>
+          Minor release featuring tow bug fixes:
+          <ul>
+            <li>Updated italian and french translations.</li>
+            <li>Fixed the CDDB tooltip to say gnudb instead.</li>
+          </ul>
+        </p>
+      </description>
+    </release>
     <release version="2.9.6" date="2020-05-28">
       <description>
         <p>
