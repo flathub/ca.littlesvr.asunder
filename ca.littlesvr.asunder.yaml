@@ -45,6 +45,10 @@ modules:
     - type: archive
       url: https://github.com/mstorsjo/fdk-aac/archive/v2.0.2.tar.gz
       sha256: 7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90
+      x-checker-data:
+        type: anitya
+        project-id: 16208
+        url-template: https://github.com/mstorsjo/fdk-aac/archive/v$version.tar.gz
       
 - name: fdkaac
   buildsystem: simple
@@ -57,6 +61,10 @@ modules:
     - type: archive
       url: https://github.com/nu774/fdkaac/archive/v1.0.2.tar.gz
       sha256: 8a0b67792605fb8955d6be78a81e3a4029e9b7d0f594d8ed76e0fbcef90be0c8
+      x-checker-data:
+        type: anitya
+        project-id: 14706
+        url-template: https://github.com/nu774/fdkaac/archive/v$version.tar.gz
 
 - name: vorbis-tools
   buildsystem: autotools
@@ -64,6 +72,10 @@ modules:
     - type: archive
       url: https://downloads.xiph.org/releases/vorbis/vorbis-tools-1.4.2.tar.gz
       sha256: db7774ec2bf2c939b139452183669be84fda5774d6400fc57fde37f77624f0b0
+      x-checker-data:
+        type: anitya
+        project-id: 5104
+        url-template: https://downloads.xiph.org/releases/vorbis/vorbis-tools-$version.tar.gz
   cleanup:
     - /bin/vorbiscomment
     - /bin/ogginfo
@@ -81,6 +93,10 @@ modules:
     - type: archive
       url: https://downloads.xiph.org/releases/opus/opusfile-0.12.tar.gz
       sha256: 118d8601c12dd6a44f52423e68ca9083cc9f2bfe72da7a8c1acb22a80ae3550b
+      x-checker-data:
+        type: anitya
+        project-id: 10353
+        url-template: https://downloads.xiph.org/releases/opus/opusfile-$version.tar.gz
 
 - name: opus-encoder
   buildsystem: autotools
@@ -88,6 +104,10 @@ modules:
     - type: archive
       url: https://archive.mozilla.org/pub/opus/libopusenc-0.2.1.tar.gz
       sha256: 8298db61a8d3d63e41c1a80705baa8ce9ff3f50452ea7ec1c19a564fe106cbb9
+      x-checker-data:
+        type: anitya
+        project-id: 17877
+        url-template: https://archive.mozilla.org/pub/opus/libopusenc-$version.tar.gz
 
 - name: opus-tools
   buildsystem: autotools
@@ -95,6 +115,10 @@ modules:
     - type: archive
       url: https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz
       sha256: b4e56cb00d3e509acfba9a9b627ffd8273b876b4e2408642259f6da28fa0ff86
+      x-checker-data:
+        type: anitya
+        project-id: 7905
+        url-template: https://archive.mozilla.org/pub/opus/opus-tools-$version.tar.gz
 
 
 # Instruction taken from org.freac.freac.json
@@ -127,6 +151,10 @@ modules:
     - type: archive
       url: https://prdownloads.sourceforge.net/libcddb/libcddb-1.3.2.tar.bz2
       sha256: 35ce0ee1741ea38def304ddfe84a958901413aa829698357f0bee5bb8f0a223b
+      x-checker-data:
+        type: anitya
+        project-id: 1572
+        url-template: https://prdownloads.sourceforge.net/libcddb/libcddb-$version.tar.bz2
     - type: shell
       commands:
         - cp -p /usr/share/automake-*/config.{sub,guess} .
@@ -145,6 +173,10 @@ modules:
     - type: archive
       url: https://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
       sha256: 005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
+      x-checker-data:
+        type: anitya
+        project-id: 15309
+        url-template: https://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-$version.src.tgz
     - type: shell
       commands:
         - cp -p /usr/share/automake-*/config.sub ./configure.sub
@@ -159,6 +191,10 @@ modules:
       # No HTTPS support on the main project site
       url: http://littlesvr.ca/asunder/releases/asunder-2.9.7.tar.bz2
       sha256: c1c97cd34c04b8595e95df8a9a7dbc64a1e61f494b7a0cd2873802ad111874f4
+      x-checker-data:
+        type: anitya
+        project-id: 124
+        url-template: http://littlesvr.ca/asunder/releases/asunder-$version.tar.bz2
   post-install:
     - install -Dm 644 ./asunder.desktop -t /app/share/applications/
     - install -Dm 644 ./pixmaps/asunder.png -t /app/share/icons/hicolor/128x128/apps/
