@@ -195,6 +195,8 @@ modules:
         type: anitya
         project-id: 124
         url-template: http://littlesvr.ca/asunder/releases/asunder-$version.tar.bz2
+    - type: patch
+      path: add-wm-class.patch
   post-install:
     - install -Dm 644 ./asunder.desktop -t /app/share/applications/
     - install -Dm 644 ./pixmaps/asunder.png -t /app/share/icons/hicolor/128x128/apps/
