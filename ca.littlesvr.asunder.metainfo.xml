@@ -46,7 +46,20 @@
   </screenshots>
 
   <releases>
-    <release version="3.0" date="2023-07-22"/>
+    <release version="3.0.0" date="2023-07-21">
+      <description>
+        <p>
+          Asunder 3.0 has been released, changelog:
+          <ul>
+            <li>Can now upload data to CDDB (thanks Andreas Hünnebeck). I haven't tested it myself.</li>
+            <li>Updated de, el, fr, it, nl, tr translations.</li>
+            <li>Added ie translation.</li>
+            <li>Some minor fixes to desktop file.</li>
+            <li>No GTK3, I just decided to bump the major version up because it's been 3 years since the last release :)</li>
+          </ul>
+        </p>
+      </description>
+    </release>
     <release version="2.9.7" date="2020-10-12">
       <description>
         <p>
