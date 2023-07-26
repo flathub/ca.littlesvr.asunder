@@ -188,8 +188,8 @@ modules:
     sources:
       - type: archive
       # No HTTPS support on the main project site
-        url: http://littlesvr.ca/asunder/releases/asunder-3.0.tar.bz2
-        sha256: cd80fe0e5bcc8eb9806c7480b0fcb861a84614cd760400663039bf06cf4db86e
+        url: http://littlesvr.ca/asunder/releases/asunder-3.0.1.tar.bz2
+        sha256: 8868e2e1b97b6687c800e7f612262a316bb857edd39883768ce628b6d253376b
         x-checker-data:
           type: anitya
           project-id: 124
