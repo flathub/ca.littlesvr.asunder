@@ -46,7 +46,16 @@
   </screenshots>
 
   <releases>
-    <release version="3.0.1" date="2023-07-26"/>
+    <release version="3.0.1" date="2023-07-26">
+      <description>
+        <p>
+          Asunder 3.0.1 has been released, changelog:
+          <ul>
+            <li>CDDB upload wasn't working in 3.0 because I forgot to change it from test mode. Fixed now.</li>
+          </ul>
+        </p>
+      </description>
+    </release>
     <release version="3.0.0" date="2023-07-21">
       <description>
         <p>
