@@ -42,8 +42,8 @@ modules:
       - --prefix=/app
     sources:
       - type: archive
-        url: https://github.com/mstorsjo/fdk-aac/archive/v2.0.2.tar.gz
-        sha256: 7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90
+        url: https://github.com/mstorsjo/fdk-aac/archive/v2.0.3.tar.gz
+        sha256: e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78
         x-checker-data:
           type: anitya
           project-id: 16208
