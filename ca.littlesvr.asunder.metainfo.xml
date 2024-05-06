@@ -6,34 +6,21 @@
   <summary>Asunder is a graphical Audio CD ripper and encoder</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-only</project_license>
-
   <developer_name>Andrew Smith et al.</developer_name>
-
   <url type="homepage">http://littlesvr.ca/asunder/index.php</url>
   <url type="donation">http://littlesvr.ca/asunder/donate.php</url>
   <url type="translate">http://littlesvr.ca/asunder/translations.php</url>
   <url type="contact">http://littlesvr.ca/contact.php?source=Asunder</url>
-
   <url type="bugtracker">https://littlesvr.ca/bugs/</url>
-
   <launchable type="desktop-id">ca.littlesvr.asunder.desktop</launchable>
-
   <description>
     <p>Asunder is a graphical Audio CD ripper and encoder for Linux. You can use it to save tracks from an Audio CD as any of WAV, MP3, OGG, FLAC, Opus, WavPack, Musepack, AAC, and Monkey's Audio files.
     </p>
-    <ul>
-      <li>Can save audio tracks as WAV, MP3, Ogg Vorbis, FLAC, Opus, Wavpack, Musepack, AAC, and Monkey's audio files</li>
-      <li>Uses CDDB to name and tag each track.</li>
-      <li>Creates M3U playlists</li>
-      <li>Can encode to multiple formats in one session</li>
-      <li>Simultaneous rip and encode</li>
-      <li>Does not require a specific desktop environment</li>
-    </ul>
+    Can save audio tracks as WAV, MP3, Ogg Vorbis, FLAC, Opus, Wavpack, Musepack, AAC, and Monkey's audio files Uses CDDB to name and tag each track. Creates M3U playlists Can encode to multiple formats in one session Simultaneous rip and encode Does not require a specific desktop environment
     <p>
       Caveat Emptor: The ARM builds only had limited testing because ARM devices with CD players are rare.
     </p>
   </description>
-
   <screenshots>
     <screenshot type="default">
       <image>http://littlesvr.ca/asunder/images/asunder-ripping.png</image>
@@ -44,52 +31,32 @@
       <caption>Main view</caption>
     </screenshot>
   </screenshots>
-
   <releases>
     <release version="3.0.1" date="2023-07-26">
       <description>
         <p>
-          Asunder 3.0.1 has been released, changelog:
-          <ul>
-            <li>CDDB upload wasn't working in 3.0 because I forgot to change it from test mode. Fixed now.</li>
-          </ul>
+          Asunder 3.0.1 has been released, changelog: CDDB upload wasn't working in 3.0 because I forgot to change it from test mode. Fixed now.
         </p>
       </description>
     </release>
     <release version="3.0.0" date="2023-07-21">
       <description>
         <p>
-          Asunder 3.0 has been released, changelog:
-          <ul>
-            <li>Can now upload data to CDDB (thanks Andreas Hünnebeck). I haven't tested it myself.</li>
-            <li>Updated de, el, fr, it, nl, tr translations.</li>
-            <li>Added ie translation.</li>
-            <li>Some minor fixes to desktop file.</li>
-            <li>No GTK3, I just decided to bump the major version up because it's been 3 years since the last release :)</li>
-          </ul>
+          Asunder 3.0 has been released, changelog: Can now upload data to CDDB (thanks Andreas Hünnebeck). I haven't tested it myself. Updated de, el, fr, it, nl, tr translations. Added ie translation. Some minor fixes to desktop file. No GTK3, I just decided to bump the major version up because it's been 3 years since the last release :)
         </p>
       </description>
     </release>
     <release version="2.9.7" date="2020-10-12">
       <description>
         <p>
-          Minor release featuring tow bug fixes:
-          <ul>
-            <li>Updated italian and french translations.</li>
-            <li>Fixed the CDDB tooltip to say gnudb instead.</li>
-          </ul>
+          Minor release featuring tow bug fixes: Updated italian and french translations. Fixed the CDDB tooltip to say gnudb instead.
         </p>
       </description>
     </release>
     <release version="2.9.6" date="2020-05-28">
       <description>
         <p>
-          <ul>
-            <li>Changed the default CDDB server to gnudb.gnudb.org</li>
-            <li>Asunder can now be more easily Flatpak-ed. Thanks to Kevin "Eonfge" Degeling for the help.</li>
-            <li>Updated eo, it, pt, pt_BR, sq, and zh_CN translations.</li>
-            <li>Updated config.guess and config.sub with the current latest to support (among other things) aarch64.</li>
-          </ul>
+          Changed the default CDDB server to gnudb.gnudb.org Asunder can now be more easily Flatpak-ed. Thanks to Kevin "Eonfge" Degeling for the help. Updated eo, it, pt, pt_BR, sq, and zh_CN translations. Updated config.guess and config.sub with the current latest to support (among other things) aarch64.
         </p>
       </description>
     </release>
@@ -99,7 +66,7 @@
       </description>
     </release>
   </releases>
-
   <content_rating type="oars-1.1">
   </content_rating>
 </component>
+
