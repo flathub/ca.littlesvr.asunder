@@ -19,10 +19,14 @@
   <launchable type="desktop-id">ca.littlesvr.asunder.desktop</launchable>
 
   <description>
-    <p>Asunder is a graphical Audio CD ripper and encoder for Linux. You can use it to save tracks from an Audio CD as any of WAV, MP3, OGG, FLAC, Opus, WavPack, Musepack, AAC, and Monkey's Audio files.
+    <p>Asunder is a graphical Audio CD ripper and encoder for Linux. You can use it to save tracks from an Audio CD
+      as
+      any of WAV, MP3, OGG, FLAC, Opus, WavPack, Musepack, AAC, and Monkey's Audio files.
     </p>
     <ul>
-      <li>Can save audio tracks as WAV, MP3, Ogg Vorbis, FLAC, Opus, Wavpack, Musepack, AAC, and Monkey's audio files</li>
+      <li>Can save audio tracks as WAV, MP3, Ogg Vorbis, FLAC, Opus, Wavpack, Musepack, AAC, and Monkey's audio
+        files
+      </li>
       <li>Uses CDDB to name and tag each track.</li>
       <li>Creates M3U playlists</li>
       <li>Can encode to multiple formats in one session</li>
@@ -50,47 +54,51 @@
       <description>
         <p>
           Asunder 3.0.1 has been released, changelog:
-          <ul>
-            <li>CDDB upload wasn't working in 3.0 because I forgot to change it from test mode. Fixed now.</li>
-          </ul>
         </p>
+        <ul>
+          <li>CDDB upload wasn't working in 3.0 because I forgot to change it from test mode. Fixed now.</li>
+        </ul>
       </description>
     </release>
     <release version="3.0.0" date="2023-07-21">
       <description>
         <p>
           Asunder 3.0 has been released, changelog:
-          <ul>
-            <li>Can now upload data to CDDB (thanks Andreas Hünnebeck). I haven't tested it myself.</li>
-            <li>Updated de, el, fr, it, nl, tr translations.</li>
-            <li>Added ie translation.</li>
-            <li>Some minor fixes to desktop file.</li>
-            <li>No GTK3, I just decided to bump the major version up because it's been 3 years since the last release :)</li>
-          </ul>
         </p>
+        <ul>
+          <li>Can now upload data to CDDB (thanks Andreas Hünnebeck). I haven't tested it myself.</li>
+          <li>Updated de, el, fr, it, nl, tr translations.</li>
+          <li>Added ie translation.</li>
+          <li>Some minor fixes to desktop file.</li>
+          <li>No GTK3, I just decided to bump the major version up because it's been 3 years since the last
+            release :)
+          </li>
+        </ul>
       </description>
     </release>
     <release version="2.9.7" date="2020-10-12">
       <description>
         <p>
           Minor release featuring tow bug fixes:
-          <ul>
-            <li>Updated italian and french translations.</li>
-            <li>Fixed the CDDB tooltip to say gnudb instead.</li>
-          </ul>
         </p>
+        <ul>
+          <li>Updated italian and french translations.</li>
+          <li>Fixed the CDDB tooltip to say gnudb instead.</li>
+        </ul>
       </description>
     </release>
     <release version="2.9.6" date="2020-05-28">
       <description>
         <p>
-          <ul>
-            <li>Changed the default CDDB server to gnudb.gnudb.org</li>
-            <li>Asunder can now be more easily Flatpak-ed. Thanks to Kevin "Eonfge" Degeling for the help.</li>
-            <li>Updated eo, it, pt, pt_BR, sq, and zh_CN translations.</li>
-            <li>Updated config.guess and config.sub with the current latest to support (among other things) aarch64.</li>
-          </ul>
+          Minor release featuring tow bug fixes:
         </p>
+        <ul>
+          <li>Changed the default CDDB server to gnudb.gnudb.org</li>
+          <li>Asunder can now be more easily Flatpak-ed. Thanks to Kevin "Eonfge" Degeling for the help.</li>
+          <li>Updated eo, it, pt, pt_BR, sq, and zh_CN translations.</li>
+          <li>Updated config.guess and config.sub with the current latest to support (among other things)
+            aarch64.</li>
+        </ul>
       </description>
     </release>
     <release version="2.9.5" date="2019-10-21">
