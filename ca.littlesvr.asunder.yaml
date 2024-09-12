@@ -162,6 +162,8 @@ modules:
           type: anitya
           project-id: 1572
           url-template: https://prdownloads.sourceforge.net/libcddb/libcddb-$version.tar.bz2
+      - type: patch
+        path: patches-libcddb/pointer-types.patch
       - type: shell
         commands:
           - cp -p /usr/share/automake-*/config.{sub,guess} .
