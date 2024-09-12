@@ -75,6 +75,8 @@ modules:
           type: anitya
           project-id: 5104
           url-template: https://downloads.xiph.org/releases/vorbis/vorbis-tools-$version.tar.gz
+      - type: patch
+        path: 0001-fix-build-with-gcc-14.patch
     cleanup:
       - /bin/vorbiscomment
       - /bin/ogginfo
