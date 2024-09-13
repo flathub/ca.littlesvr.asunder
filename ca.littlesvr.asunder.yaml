@@ -1,7 +1,7 @@
 app-id: ca.littlesvr.asunder
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
-runtime-version: '23.08'
+runtime-version: '24.08'
 command: asunder
 
 rename-desktop-file: asunder.desktop
@@ -75,6 +75,8 @@ modules:
           type: anitya
           project-id: 5104
           url-template: https://downloads.xiph.org/releases/vorbis/vorbis-tools-$version.tar.gz
+      - type: patch
+        path: patches-vorbis/0001-fix-build-with-gcc-14.patch
     cleanup:
       - /bin/vorbiscomment
       - /bin/ogginfo
@@ -129,6 +131,12 @@ modules:
       - type: archive
         url: https://files.musepack.net/source/musepack_src_r475.tar.gz
         sha256: a4b1742f997f83e1056142d556a8c20845ba764b70365ff9ccf2e3f81c427b2b
+      - type: patch
+        paths:
+          - patches-musepack/libmpcdec.patch
+          - patches-musepack/libmpcdec-extern.patch
+          - patches-musepack/libmpcdec-fastmath-no-const.patch
+          - patches-musepack/libmpcdec-gcc14.patch
       - type: shell
         commands:
           - touch include/config.h.in
@@ -154,6 +162,8 @@ modules:
           type: anitya
           project-id: 1572
           url-template: https://prdownloads.sourceforge.net/libcddb/libcddb-$version.tar.bz2
+      - type: patch
+        path: patches-libcddb/pointer-types.patch
       - type: shell
         commands:
           - cp -p /usr/share/automake-*/config.{sub,guess} .
