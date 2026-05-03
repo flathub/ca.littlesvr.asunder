@@ -7,16 +7,17 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-only</project_license>
 
-  <developer_name>Andrew Smith et al.</developer_name>
+  <developer id="ca.littlesvr">
+    <name>Andrew Smith et al.</name>
+  </developer>
 
   <url type="homepage">http://littlesvr.ca/asunder/index.php</url>
+  <url type="bugtracker">https://littlesvr.ca/bugs/</url>
   <url type="donation">http://littlesvr.ca/asunder/donate.php</url>
   <url type="translate">http://littlesvr.ca/asunder/translations.php</url>
   <url type="contact">http://littlesvr.ca/contact.php?source=Asunder</url>
-
-  <url type="bugtracker">https://littlesvr.ca/bugs/</url>
-
   <launchable type="desktop-id">ca.littlesvr.asunder.desktop</launchable>
+  <content_rating type="oars-1.1"/>
 
   <description>
     <p>Asunder is a graphical Audio CD ripper and encoder for Linux. You can use it to save tracks from an Audio CD
@@ -51,7 +52,7 @@
 
   <releases>
     <release version="3.0.2" date="2026-02-06">
-      <description></description>
+      <url>http://www.littlesvr.ca/asunder/releases/ChangeLog</url>
     </release>
     <release version="3.0.1" date="2023-07-26">
       <description>
@@ -111,6 +112,4 @@
     </release>
   </releases>
 
-  <content_rating type="oars-1.1">
-  </content_rating>
 </component>
