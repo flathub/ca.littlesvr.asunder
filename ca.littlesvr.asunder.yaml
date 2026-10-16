@@ -1,7 +1,7 @@
 app-id: ca.littlesvr.asunder
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
-runtime-version: '25.08'
+runtime-version: '26.08'
 command: asunder
 
 rename-desktop-file: asunder.desktop
@@ -42,24 +42,26 @@ modules:
       - --prefix=/app
     sources:
       - type: archive
-        url: https://github.com/mstorsjo/fdk-aac/archive/v2.0.3.tar.gz
-        sha256: e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78
+        url: https://github.com/mstorsjo/fdk-aac/archive/v3.0.0.tar.gz
+        sha256: 8538ea8f0f9915e460c106a13e1866a9e13c7ee48c1b67d0b2cf7b4e8159bd1a
         x-checker-data:
           type: anitya
           project-id: 16208
+          # versions:
+          #   - <: '3'
           url-template: https://github.com/mstorsjo/fdk-aac/archive/v$version.tar.gz
 
   - name: fdkaac
     buildsystem: simple
     build-commands:
-      - autoreconf -i
+      - autoreconf -fi
       - ./configure --prefix=/app
       - make
       - make install
     sources:
       - type: archive
-        url: https://github.com/nu774/fdkaac/archive/v1.0.7.tar.gz
-        sha256: 145d4684c9325a2bd650e46a04b03327abe780a7b59cce47e6de8af2064fb2c7
+        url: https://github.com/nu774/fdkaac/archive/v1.0.9.tar.gz
+        sha256: be6de0851c447d132e9bff0141068ee6fec6d37e21973ea9304480c68178058b
         x-checker-data:
           type: anitya
           project-id: 14706
@@ -67,6 +69,13 @@ modules:
 
   - name: vorbis-tools
     buildsystem: autotools
+    cleanup:
+      - /bin/vorbiscomment
+      - /bin/ogginfo
+      - /bin/oggdec
+      - /bin/vcut
+      - /share/locale
+      - /share/runtime
     sources:
       - type: archive
         url: https://downloads.xiph.org/releases/vorbis/vorbis-tools-1.4.3.tar.gz
@@ -77,13 +86,7 @@ modules:
           url-template: https://downloads.xiph.org/releases/vorbis/vorbis-tools-$version.tar.gz
       - type: patch
         path: patches-vorbis/0001-fix-build-with-gcc-14.patch
-    cleanup:
-      - /bin/vorbiscomment
-      - /bin/ogginfo
-      - /bin/oggdec
-      - /bin/vcut
-      - /share/locale
-      - /share/runtime
+
 
 # Opus splits up their packages in three disctinct components: file,
 # encoder and tools. They also officially host their files at Mozilla,
@@ -103,12 +106,12 @@ modules:
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://archive.mozilla.org/pub/opus/libopusenc-0.2.1.tar.gz
-        sha256: 8298db61a8d3d63e41c1a80705baa8ce9ff3f50452ea7ec1c19a564fe106cbb9
+        url: https://downloads.xiph.org/releases/opus/libopusenc-0.3.tar.gz
+        sha256: f616d3aff9b2034547894ccb8ab56c36cf1a4acb0d922c5d7119f97bbe58642c
         x-checker-data:
           type: anitya
           project-id: 17877
-          url-template: https://archive.mozilla.org/pub/opus/libopusenc-$version.tar.gz
+          url-template: https://downloads.xiph.org/releases/opus/libopusenc-$version.tar.gz
 
   - name: opus-tools
     buildsystem: autotools
@@ -120,7 +123,6 @@ modules:
           type: anitya
           project-id: 7905
           url-template: https://archive.mozilla.org/pub/opus/opus-tools-$version.tar.gz
-
 
 # Instruction taken from org.freac.freac.json
   - name: musepack
@@ -195,26 +197,21 @@ modules:
     buildsystem: autotools
     config-opts:
       - --prefix=/app
+    post-install:
+      - install -Dm 644 ./asunder.desktop -t /app/share/applications/
+      - install -Dm 644 ./pixmaps/asunder.png -t /app/share/icons/hicolor/128x128/apps/
+      - install -Dm 644 ./pixmaps/asunder.svg -t /app/share/icons/hicolor/scalable/apps/
+      - desktop-file-edit --set-key=Keywords --set-value='Extract;Compact;Disc;' /app/share/applications/asunder.desktop
+      - install -Dm 644 ca.littlesvr.asunder.metainfo.xml -t /app/share/metainfo/
     sources:
       - type: archive
       # No HTTPS support on the main project site
         url: http://littlesvr.ca/asunder/releases/asunder-3.0.2.tar.bz2
         sha256: b71341d746ccf56aa77b1785c6af81aa641d084ac3d34b78beb537618848b64b
         x-checker-data:
+          is-main-source: true
           type: anitya
           project-id: 124
           url-template: http://littlesvr.ca/asunder/releases/asunder-$version.tar.bz2
-    post-install:
-      - install -Dm 644 ./asunder.desktop -t /app/share/applications/
-      - install -Dm 644 ./pixmaps/asunder.png -t /app/share/icons/hicolor/128x128/apps/
-      - install -Dm 644 ./pixmaps/asunder.svg -t /app/share/icons/hicolor/scalable/apps/
-      - desktop-file-edit --set-key=Keywords --set-value='Extract;Compact;Disc;' /app/share/applications/asunder.desktop
-
-  - name: metadata
-    buildsystem: simple
-    build-commands:
-      - install -Dm 644 ca.littlesvr.asunder.metainfo.xml -t /app/share/metainfo/
-    sources:
       - type: file
         path: ca.littlesvr.asunder.metainfo.xml
-
